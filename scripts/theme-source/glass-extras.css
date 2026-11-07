@@ -1,0 +1,607 @@
+@T {
+  --g-blur: blur(26px) saturate(185%);
+  --g-blur-strong: blur(36px) saturate(195%);
+  --g-blur-soft: blur(14px) saturate(170%);
+  --g-blur-entry: blur(26px) saturate(140%);
+  --g-font:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Segoe UI Variable Text", "Segoe UI", system-ui, "Helvetica Neue",
+    "Noto Sans Symbols 2", "Segoe UI Symbol", sans-serif;
+  --g-spring: @SPRING_EASE;
+  --g-spring-time: @SPRING_TIME;
+  --g-bounce: @BOUNCE_EASE;
+  --g-bounce-time: @BOUNCE_TIME;
+  --heart: var(--g-heart);
+  scrollbar-color: var(--g-scroll) transparent;
+}
+
+@G body::before {
+  inset: -12vh -12vw;
+  background: var(--g-wallpaper);
+}
+
+@T body,
+@T button,
+@T input,
+@T textarea,
+@T select,
+@T .popup-title,
+@T .widget-bar,
+@T .post-header,
+@T .soft-btn,
+@T .post-btn,
+@T .message {
+  font-family: var(--g-font);
+  letter-spacing: -0.01em;
+}
+
+@T body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+@G .site-title {
+  font-family: var(--g-font);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--g-text);
+  text-shadow: var(--g-title-shadow);
+}
+
+@G,
+@G body,
+@G .post-text,
+@G .widget-content,
+@G .popup-body,
+@G .post-author-name,
+@G .notification-message,
+@G .link-card-title,
+@G .quote-pill {
+  color: var(--g-text);
+}
+
+@G .post-author-text span:not(.post-author-name),
+@G .popup-label,
+@G .timeline-search-count,
+@G .timeline-date-field,
+@G .notification-time,
+@G .link-card-url {
+  color: var(--g-text-soft);
+}
+
+@G .post,
+@G .widget,
+@G .timeline-tools {
+  border: 1px solid transparent;
+  background:
+    var(--g-shine) padding-box,
+    linear-gradient(var(--g-fill), var(--g-fill)) padding-box,
+    var(--g-rim) border-box;
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  box-shadow: var(--g-shadow);
+}
+
+@G .post,
+@G .widget {
+  transition:
+    transform var(--g-spring-time) var(--g-spring),
+    box-shadow 0.24s ease;
+}
+
+@media (hover: hover) {
+  @G .post:hover,
+  @G .widget:hover {
+    border-color: transparent;
+    background:
+      var(--g-shine) padding-box,
+      linear-gradient(var(--g-fill), var(--g-fill)) padding-box,
+      var(--g-rim-lift) border-box;
+    box-shadow: var(--g-shadow-lift);
+  }
+
+  @G .post:hover {
+    transform: none;
+  }
+}
+
+@media (hover: none) {
+  @G .post:hover,
+  @G .widget:hover {
+    transform: none;
+    box-shadow: var(--g-shadow);
+  }
+
+  @G .post {
+    animation-name: glassFadeIn;
+  }
+}
+
+@G .popup-card,
+@G .notifications-panel,
+@G .theme-menu {
+  border: 1px solid transparent;
+  background:
+    var(--g-shine) padding-box,
+    linear-gradient(var(--g-fill-popup), var(--g-fill-popup)) padding-box,
+    var(--g-rim-lift) border-box;
+  -webkit-backdrop-filter: var(--g-blur-strong);
+  backdrop-filter: var(--g-blur-strong);
+  box-shadow: var(--g-shadow-lift);
+}
+
+@G .popup {
+  background: var(--g-overlay);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+@G .toolbar {
+  border: 1px solid transparent;
+  background:
+    var(--g-shine) padding-box,
+    linear-gradient(var(--g-fill), var(--g-fill)) padding-box,
+    var(--g-rim) border-box;
+  box-shadow: var(--g-shadow);
+}
+
+@G .toolbar::before {
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+}
+
+@G .widget-bar,
+@G .post-header,
+@G .popup-header,
+@G .notifications-panel-header {
+  background: var(--g-band);
+  border-color: var(--g-edge-soft);
+  box-shadow: inset 0 -1px 0 var(--g-band-line);
+  color: var(--g-text);
+}
+
+@G .post-body,
+@G .widget-content,
+@G .popup-body {
+  background: transparent;
+}
+
+@G .widget-bar-actions > button {
+  color: var(--g-text-soft);
+}
+
+@G .soft-btn,
+@G .post-btn,
+@G .notifications-btn,
+@G .theme-toggle,
+@G .profile-icon-btn,
+@G .app-zoom-control,
+@G .quote-pill,
+@G .mobile-view-btn,
+@G .widget-thinking-of-you-btn,
+@G .song-widget-link,
+@G .notifications-mark-btn,
+@G .theme-option,
+@G .floating-entry-btn {
+  border: 1px solid var(--g-edge);
+  background: var(--g-btn);
+  box-shadow: var(--g-btn-shadow);
+  color: var(--g-text);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform var(--g-spring-time) var(--g-spring),
+    background 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+@G .floating-entry-btn {
+  transition:
+    opacity 0.24s ease,
+    transform var(--g-spring-time) var(--g-spring),
+    background 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+@media (hover: hover) {
+  @G .soft-btn:hover,
+  @G .post-btn:hover,
+  @G .notifications-btn:hover,
+  @G .theme-toggle:hover,
+  @G .profile-icon-btn:hover,
+  @G .mobile-view-btn:hover,
+  @G .theme-option:hover {
+    background: var(--g-btn-hover);
+    box-shadow: var(--g-btn-shadow-hover);
+    color: var(--g-text);
+  }
+}
+
+@G .soft-btn:active,
+@G .post-btn:active,
+@G .notifications-btn:active,
+@G .theme-toggle:active,
+@G .profile-icon-btn:active,
+@G .mobile-view-btn:active,
+@G .widget-thinking-of-you-btn:active,
+@G .song-widget-link:active,
+@G .theme-option:active,
+@G .widget-bar-actions > button:active {
+  transform: scale(0.97);
+  transition-duration: 80ms, 80ms, 80ms;
+  transition-timing-function: ease-out;
+}
+
+@G .floating-entry-btn:active {
+  transition-duration: 0.24s, 80ms, 80ms, 80ms;
+  transition-timing-function: ease-out;
+}
+
+@G :is(button, a, [role="radio"]):focus-visible {
+  outline: 2px solid var(--g-accent-edge);
+  outline-offset: 2px;
+}
+
+@G :is(input, select, textarea, [contenteditable="true"]):focus-visible {
+  outline: none;
+}
+
+@G .timeline-on-this-day.active,
+@G .timeline-filter-toggle[aria-expanded="true"],
+@G .search-toggle-btn.active,
+@G .mobile-view-btn.active,
+@G .theme-option[aria-checked="true"],
+@G .post-btn.liked {
+  background: var(--g-active-fill);
+  border-color: var(--g-active-edge);
+  color: var(--g-active-text);
+  box-shadow: var(--g-active-shadow);
+}
+
+@G .post-btn.liked .post-btn-icon {
+  color: var(--g-heart);
+}
+
+@G .floating-entry-btn {
+  background: var(--g-shine), var(--g-fill-popup);
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  box-shadow: var(--g-shadow-lift);
+}
+
+@G .mobile-view-switcher {
+  border-color: transparent;
+  background:
+    var(--g-shine) padding-box,
+    linear-gradient(var(--g-fill-popup), var(--g-fill-popup)) padding-box,
+    var(--g-rim-lift) border-box;
+  -webkit-backdrop-filter: var(--g-blur-strong);
+  backdrop-filter: var(--g-blur-strong);
+  box-shadow: var(--g-shadow-lift);
+}
+
+@G .tinted-corner-badge {
+  background: var(--g-fill-popup);
+  -webkit-backdrop-filter: var(--g-blur-soft);
+  backdrop-filter: var(--g-blur-soft);
+  color: var(--g-text-soft);
+}
+
+@G .notifications-badge {
+  background: #ff3b30;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(255, 59, 48, 0.45);
+}
+
+@G .popup-input,
+@G .timeline-tools .timeline-search-input,
+@G #entryPopup .ql-container.ql-snow {
+  border: 1px solid var(--g-edge);
+  background: var(--g-field);
+  box-shadow: var(--g-field-shadow);
+  color: var(--g-text);
+}
+
+@G .popup-input:focus,
+@G .timeline-tools .timeline-search-input:focus {
+  border-color: var(--g-accent-edge);
+  background: var(--g-field-focus);
+  box-shadow: 0 0 0 3px var(--g-accent-ring);
+}
+
+@T .popup-input::placeholder,
+@T .ql-editor.ql-blank::before {
+  color: var(--g-placeholder);
+}
+
+@G #entryPopup .ql-toolbar.ql-snow {
+  border: 1px solid var(--g-edge);
+  background: var(--g-band);
+}
+
+@G #entryPopup .ql-toolbar .ql-stroke {
+  stroke: var(--g-text);
+}
+
+@G #entryPopup .ql-toolbar .ql-fill {
+  fill: var(--g-text);
+}
+
+@G #entryPopup .ql-toolbar .ql-picker,
+@G #entryPopup .ql-toolbar .ql-picker-label {
+  color: var(--g-text);
+}
+
+@G .ql-picker-options {
+  border: 1px solid var(--g-edge);
+  background: var(--g-fill-popup);
+  -webkit-backdrop-filter: var(--g-blur-strong);
+  backdrop-filter: var(--g-blur-strong);
+}
+
+@G .link-preview.spotify-card,
+@G .link-preview.link-card,
+@G .notification-item,
+@G .comment-item,
+@G .profile-stat-card,
+@G .profile-bio-card,
+@G .photo-history-card,
+@G .widget-history-item {
+  border: 1px solid var(--g-edge-soft);
+  background: var(--g-inner);
+  box-shadow: var(--g-inner-shadow);
+  color: var(--g-text);
+}
+
+@G .notification-item.is-unread {
+  border-color: var(--g-accent-edge);
+}
+
+@G .post-avatar {
+  box-shadow: 0 0 0 2px var(--g-edge), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+@G .message,
+@G .timeline-scrubber-thumb,
+@G .timeline-scrubber-label {
+  border: 1px solid var(--g-edge);
+  background: var(--g-toast);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: var(--g-shadow-lift);
+  color: var(--g-text);
+}
+
+@G .timeline-scrubber.is-dragging .timeline-scrubber-thumb {
+  background: var(--g-active-fill);
+}
+
+@G .timeline-scrubber-grip {
+  background:
+    linear-gradient(var(--g-text-soft), var(--g-text-soft)) 0 0 / 100% 2px no-repeat,
+    linear-gradient(var(--g-text-soft), var(--g-text-soft)) 0 50% / 100% 2px no-repeat,
+    linear-gradient(var(--g-text-soft), var(--g-text-soft)) 0 100% / 100% 2px no-repeat;
+}
+
+@G .decor {
+  color: var(--g-decor);
+  text-shadow: var(--g-decor-glow);
+  opacity: 0.7;
+}
+
+@G .sparkle-decor,
+@G .fading-emoji-decor {
+  color: var(--g-decor);
+  text-shadow: var(--g-decor-glow);
+}
+
+@T .post-text img,
+@T .widget-photo-frame {
+  border-radius: 18px;
+}
+
+@T ::selection {
+  background: var(--g-accent-ring);
+}
+
+@T ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@T ::-webkit-scrollbar-thumb {
+  background: var(--g-scroll);
+  border-color: transparent;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @G .post,
+  @G .widget,
+  @G .timeline-tools,
+  @G .toolbar,
+  @G .popup-card,
+  @G .notifications-panel {
+    background: var(--g-fallback);
+  }
+}
+
+@G .popup {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@G .notifications-panel,
+@G .theme-menu {
+  animation: none;
+  transition:
+    opacity 0.2s ease,
+    transform var(--g-spring-time) var(--g-spring),
+    display 0.24s allow-discrete;
+}
+
+@G .notifications-panel[hidden],
+@G .theme-menu[hidden] {
+  opacity: 0;
+}
+
+@starting-style {
+  @G .notifications-panel:not([hidden]),
+  @G .theme-menu:not([hidden]) {
+    opacity: 0;
+  }
+}
+
+@G .notifications-panel,
+@G .theme-menu {
+  transform-origin: top right;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  @G .notifications-panel[hidden],
+  @G .theme-menu[hidden] {
+    transform: scale(0.94);
+  }
+
+  @starting-style {
+    @G .notifications-panel:not([hidden]),
+    @G .theme-menu:not([hidden]) {
+      transform: scale(0.94);
+    }
+  }
+}
+
+@keyframes glassFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@G .notifications-panel-header {
+  gap: 8px;
+}
+
+@G .notifications-panel-actions {
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+@G .notifications-mark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-height: 30px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--g-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@G .notifications-mark-btn:hover {
+  background: var(--g-btn-hover);
+  box-shadow: var(--g-btn-shadow-hover);
+}
+
+@G .post-text,
+@G .post-text.ql-editor {
+  line-height: 1.7;
+}
+
+@G .popup-title,
+@G .post-author-name {
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+@G .post-author-text span:not(.post-author-name),
+@G .popup-label,
+@G .notification-time,
+@G .link-card-url {
+  font-weight: 500;
+  letter-spacing: 0.006em;
+}
+
+@G .notification-time,
+@G .timeline-search-count,
+@G .app-zoom-control {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  @G {
+    --g-blur: none;
+    --g-blur-strong: none;
+    --g-blur-soft: none;
+    --g-blur-entry: none;
+    --g-fill: var(--g-solid);
+    --g-fill-entry: var(--g-solid);
+    --g-fill-popup: var(--g-solid-popup);
+    --g-toast: var(--g-solid-popup);
+    --g-shine: linear-gradient(transparent, transparent);
+    --g-sheen: linear-gradient(transparent, transparent);
+  }
+
+  @G .message,
+  @G .timeline-scrubber-label {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  @G {
+    --g-blur: none;
+    --g-blur-strong: none;
+    --g-blur-soft: none;
+    --g-blur-entry: none;
+    --g-fill: var(--g-solid);
+    --g-fill-entry: var(--g-solid);
+    --g-fill-popup: var(--g-solid-popup);
+    --g-toast: var(--g-solid-popup);
+    --g-text-soft: var(--g-text);
+    --g-edge: rgba(255, 255, 255, 0.6);
+    --g-edge-soft: rgba(255, 255, 255, 0.4);
+    --g-rim: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+    --g-rim-lift: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @G .notifications-panel[hidden],
+  @G .theme-menu[hidden],
+  @G .widget:hover {
+    transform: none;
+  }
+}
+
+@G .pe-btn:has(> span) svg {
+  width: 18px;
+  height: 18px;
+  transform: translateY(0.5px);
+}
+
+@G .post,
+@G .post:hover {
+  -webkit-backdrop-filter: var(--g-blur-entry);
+  backdrop-filter: var(--g-blur-entry);
+  background:
+    var(--g-sheen) 0 0 / 100% 280px no-repeat padding-box,
+    linear-gradient(var(--g-fill-entry), var(--g-fill-entry)) padding-box,
+    var(--g-rim) border-box;
+}
+
+@media (hover: hover) {
+  @G .post:hover {
+    background:
+      var(--g-sheen) 0 0 / 100% 280px no-repeat padding-box,
+      linear-gradient(var(--g-fill-entry), var(--g-fill-entry)) padding-box,
+      var(--g-rim-lift) border-box;
+  }
+}
