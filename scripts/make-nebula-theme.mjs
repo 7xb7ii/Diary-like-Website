@@ -4,12 +4,12 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFileSync(path.join(root, file), "utf8");
-const extras = read("scripts/theme-source/glass-extras.css");
+const extras = read("scripts/theme-source/nebula-extras.css");
 
 const variants = [
   {
-    id: "glass-dark",
-    base: "plum",
+    id: "nebula",
+    base: "dusk",
     scheme: "dark",
     tint: { hue: 248, maxSat: 0.3 },
     vars: {

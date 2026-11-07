@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Tandem" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="theme-color" content="#17101c" id="themeColorMeta" />
+    <meta name="theme-color" content="#0d0b1c" id="themeColorMeta" />
     <link rel="icon" type="image/png" sizes="48x48" href="./icons/favicon-48.png" data-theme-icon="favicon-48.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" data-theme-icon="icon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" data-theme-icon="apple-touch-icon.png" />
@@ -30,14 +30,14 @@
             const cookie = document.cookie.match(/(?:^|; )tandemTheme=([^;]+)/);
             savedTheme = cookie ? decodeURIComponent(cookie[1]) : null;
           }
-          const knownTheme = ["plum", "dark", "rose", "emo", "glass-dark"].includes(savedTheme)
+          const knownTheme = ["dusk", "pine", "blossom", "ember", "nebula"].includes(savedTheme)
             ? savedTheme
-            : "plum";
+            : "nebula";
           document.documentElement.dataset.theme = knownTheme;
-          const art = knownTheme === "plum" ? "./" : "./themes/" + knownTheme + "/";
+          const art = knownTheme === "nebula" ? "./" : "./themes/" + knownTheme + "/";
           window.__THEME_ART__ = art;
           document.querySelectorAll("link[data-theme-icon]").forEach((link) => {
-            link.href = (knownTheme === "plum" ? "./icons/" : art) + link.dataset.themeIcon;
+            link.href = (knownTheme === "nebula" ? "./icons/" : art) + link.dataset.themeIcon;
           });
           const preload = document.createElement("link");
           preload.rel = "preload";
@@ -61,17 +61,17 @@
             .querySelector('meta[name="theme-color"]')
             ?.setAttribute(
               "content",
-              ({ plum: "#17101c", dark: "#0f1c1d", rose: "#fff8fb", emo: "#070607", "glass-dark": "#0d0b1c" })[knownTheme] || "#17101c",
+              ({ dusk: "#17101c", pine: "#0f1c1d", blossom: "#fff8fb", ember: "#070607", nebula: "#0d0b1c" })[knownTheme] || "#0d0b1c",
             );
           document.documentElement.style.setProperty(
             "--launch-bg",
-            ({ plum: "#1a1020", dark: "#0f1c1d", rose: "#fff3f8", emo: "#070607", "glass-dark": "#1e1b3c" })[knownTheme] || "#1a1020",
+            ({ dusk: "#1a1020", pine: "#0f1c1d", blossom: "#fff3f8", ember: "#070607", nebula: "#1e1b3c" })[knownTheme] || "#1e1b3c",
           );
         } catch {
-          document.documentElement.dataset.theme = "plum";
+          document.documentElement.dataset.theme = "nebula";
           document
             .querySelector('meta[name="theme-color"]')
-            ?.setAttribute("content", "#17101c");
+            ?.setAttribute("content", "#0d0b1c");
         }
       })();
     </script>
@@ -238,20 +238,20 @@
                 </span>
               </button>
               <div class="theme-menu" id="themeMenu" role="radiogroup" aria-label="theme" hidden>
-                <button class="theme-option" type="button" role="radio" data-theme-option="plum" aria-checked="false">
-                  <span class="theme-swatch theme-swatch-plum" aria-hidden="true"></span><span>dusk</span>
+                <button class="theme-option" type="button" role="radio" data-theme-option="dusk" aria-checked="false">
+                  <span class="theme-swatch theme-swatch-dusk" aria-hidden="true"></span><span>dusk</span>
                 </button>
-                <button class="theme-option" type="button" role="radio" data-theme-option="dark" aria-checked="false">
-                  <span class="theme-swatch theme-swatch-dark" aria-hidden="true"></span><span>pine</span>
+                <button class="theme-option" type="button" role="radio" data-theme-option="pine" aria-checked="false">
+                  <span class="theme-swatch theme-swatch-pine" aria-hidden="true"></span><span>pine</span>
                 </button>
-                <button class="theme-option" type="button" role="radio" data-theme-option="glass-dark" aria-checked="false">
-                  <span class="theme-swatch theme-swatch-glass-dark" aria-hidden="true"></span><span>nebula</span>
+                <button class="theme-option" type="button" role="radio" data-theme-option="nebula" aria-checked="false">
+                  <span class="theme-swatch theme-swatch-nebula" aria-hidden="true"></span><span>nebula</span>
                 </button>
-                <button class="theme-option" type="button" role="radio" data-theme-option="rose" aria-checked="false">
-                  <span class="theme-swatch theme-swatch-rose" aria-hidden="true"></span><span>blossom</span>
+                <button class="theme-option" type="button" role="radio" data-theme-option="blossom" aria-checked="false">
+                  <span class="theme-swatch theme-swatch-blossom" aria-hidden="true"></span><span>blossom</span>
                 </button>
-                <button class="theme-option" type="button" role="radio" data-theme-option="emo" aria-checked="false">
-                  <span class="theme-swatch theme-swatch-emo" aria-hidden="true"></span><span>ember</span>
+                <button class="theme-option" type="button" role="radio" data-theme-option="ember" aria-checked="false">
+                  <span class="theme-swatch theme-swatch-ember" aria-hidden="true"></span><span>ember</span>
                 </button>
               </div>
             </div>

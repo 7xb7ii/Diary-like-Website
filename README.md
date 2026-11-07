@@ -2,6 +2,14 @@
 
 A private diary for two people, built as a template. It installs like an app, works offline, and needs no server or database: everything is saved in the browser.
 
+![Tandem on a computer](docs/screenshots/desktop.jpg)
+
+<p align="center">
+  <img src="docs/screenshots/phone-entries.jpg" alt="Entries on a phone" width="32%" />
+  &nbsp;
+  <img src="docs/screenshots/phone-widgets.jpg" alt="Widgets on a phone" width="32%" />
+</p>
+
 ## Run it
 
 ```bash
@@ -24,9 +32,15 @@ Open http://localhost:5173 and sign in with either account from `src/app-config.
 - **Custom widgets:** add your own from the + icon in the toolbar; edit or delete them any time
 - **Photo editor:** crop, rotate, filters, drawing and text for keepsakes
 - **Inbox:** in-app notifications about what the other person did
-- **Themes:** dusk, pine, nebula, blossom and ember, each with its own launch screen and icon
+- **Themes:** nebula (the default), dusk, pine, blossom and ember, each with its own launch screen and icon
 - **PDF export:** the whole diary as a printable book
 - **Installable:** a service worker and web manifest
+
+## Themes
+
+Nebula, dusk, pine, blossom and ember:
+
+![The five themes](docs/screenshots/themes.jpg)
 
 ## Make it yours
 
@@ -42,7 +56,7 @@ Open http://localhost:5173 and sign in with either account from `src/app-config.
    node scripts/make-art.cjs
    ```
 
-4. **Themes:** edit `src/themes/*.css` directly. `glass-dark.css` is generated, so change `scripts/theme-source/glass-extras.css` and run `node scripts/make-glass-theme.mjs` instead.
+4. **Themes:** edit `src/themes/*.css` directly. `nebula.css` is generated, so change `scripts/theme-source/nebula-extras.css` and run `node scripts/make-nebula-theme.mjs` instead.
 
 ## Add a real backend
 

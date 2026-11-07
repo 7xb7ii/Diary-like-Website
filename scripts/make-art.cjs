@@ -5,11 +5,11 @@ const path = require("path");
 const publicDir = path.join(__dirname, "..", "public");
 
 const THEMES = {
-  plum: { bg: ["#17101c", "#21142a", "#2a1832"], glow: "#f4b3dc", deep: "#8a2f78" },
-  emo: { bg: ["#070607", "#0d0b0d", "#140d10"], glow: "#ff5a66", deep: "#6a0b18" },
-  dark: { bg: ["#0f1c1d", "#142728", "#1b2e2f"], glow: "#b4ecd9", deep: "#2b6a5e" },
-  "glass-dark": { bg: ["#100e22", "#0c0b1a", "#1e1b3c"], glow: "#f3f0ff", deep: "#5c54d6" },
-  rose: { bg: ["#fff8fb", "#fff0f6", "#fde6f0"], glow: "#d6527c", deep: "#f3c3d4" },
+  dusk: { bg: ["#17101c", "#21142a", "#2a1832"], glow: "#f4b3dc", deep: "#8a2f78" },
+  ember: { bg: ["#070607", "#0d0b0d", "#140d10"], glow: "#ff5a66", deep: "#6a0b18" },
+  pine: { bg: ["#0f1c1d", "#142728", "#1b2e2f"], glow: "#b4ecd9", deep: "#2b6a5e" },
+  nebula: { bg: ["#100e22", "#0c0b1a", "#1e1b3c"], glow: "#f3f0ff", deep: "#5c54d6" },
+  blossom: { bg: ["#fff8fb", "#fff0f6", "#fde6f0"], glow: "#d6527c", deep: "#f3c3d4" },
 };
 
 const HEART = "M0 9 C-3 5 -10 3 -10 -3 C-10 -8 -3 -9 0 -4 C3 -9 10 -8 10 -3 C10 3 3 5 0 9 Z";
@@ -201,7 +201,7 @@ async function main() {
   }
 
   for (const [id, theme] of Object.entries(THEMES)) {
-    const isDefault = id === "plum";
+    const isDefault = id === "nebula";
     const dir = isDefault ? publicDir : path.join(publicDir, "themes", id);
     const iconDir = isDefault ? path.join(publicDir, "icons") : dir;
     fs.mkdirSync(iconDir, { recursive: true });

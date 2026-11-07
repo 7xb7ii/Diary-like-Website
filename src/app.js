@@ -166,7 +166,7 @@ let widgets = [
     title: "⋆𐙚₊quick note˚⊹♡",
     side: "left",
     x: 16,
-    y: 503,
+    y: 442,
     data: {
       text: SAMPLE_WIDGETS.note,
     },
@@ -191,7 +191,7 @@ let widgets = [
     title: "𓂃˖˳·˖ ִֶָ ⋆bucket list⋆ ִֶָ˖·˳˖𓂃",
     side: "left",
     x: 4,
-    y: 646,
+    y: 585,
     data: {
       items: SAMPLE_WIDGETS.bucketList.map((text, index) => ({
         id: crypto.randomUUID ? crypto.randomUUID() : `wish${index}`,
@@ -206,7 +206,7 @@ let widgets = [
     title: "☁ ˚｡ sky watch ₊˚",
     side: "left",
     x: 8,
-    y: 861,
+    y: 862,
     data: {
       locations: [],
       status: "idle",
@@ -219,7 +219,7 @@ let widgets = [
     title: "˚₊‧ thinking of you ‧₊˚",
     side: "right",
     x: 8,
-    y: 471,
+    y: 462,
     data: {
       countsByUser: {},
       totalCountsByUser: {},
@@ -233,7 +233,7 @@ let widgets = [
     title: "｡ ₊°༺ days together ༻°₊ ｡",
     side: "right",
     x: 28,
-    y: 276,
+    y: 262,
     data: {
       startDate: TOGETHER_SINCE,
       message: SAMPLE_WIDGETS.together,
@@ -245,7 +245,7 @@ let widgets = [
     title: "₊˚⊹ keepsake ♡",
     side: "left",
     x: 12,
-    y: 1151,
+    y: 1162,
     data: {
       ...SAMPLE_WIDGETS.keepsakes[0],
       textColor: "#ffffff",
@@ -261,7 +261,7 @@ let widgets = [
     title: "♡ keepsake ⊹˚₊",
     side: "right",
     x: 12,
-    y: 777,
+    y: 768,
     data: {
       ...SAMPLE_WIDGETS.keepsakes[1],
       textColor: "#ffffff",
@@ -1462,14 +1462,14 @@ function adjustAppZoom(delta) {
   fitWidgetsInViewport();
 }
 
-const DEFAULT_THEME = "plum";
-const AVAILABLE_THEMES = ["emo", "plum", "dark", "glass-dark", "rose"];
+const DEFAULT_THEME = "nebula";
+const AVAILABLE_THEMES = ["ember", "dusk", "pine", "nebula", "blossom"];
 const THEME_CHROME_FALLBACKS = {
-  plum: "#17101c",
-  dark: "#0f1c1d",
-  rose: "#fff8fb",
-  emo: "#070607",
-  "glass-dark": "#0d0b1c",
+  dusk: "#17101c",
+  pine: "#0f1c1d",
+  blossom: "#fff8fb",
+  ember: "#070607",
+  nebula: "#0d0b1c",
 };
 const themeStylesheetLoads = new Map();
 
@@ -1511,7 +1511,7 @@ function setTheme(theme) {
     themeColorMeta.setAttribute("content", getThemeChromeColor(nextTheme));
   }
   document.querySelectorAll("link[data-theme-icon]").forEach((link) => {
-    const folder = nextTheme === "plum" ? "./icons/" : `./themes/${nextTheme}/`;
+    const folder = nextTheme === DEFAULT_THEME ? "./icons/" : `./themes/${nextTheme}/`;
     const href = folder + link.dataset.themeIcon;
     if (link.getAttribute("href") !== href) link.setAttribute("href", href);
   });
@@ -1519,7 +1519,7 @@ function setTheme(theme) {
   themeMenu?.querySelectorAll("[data-theme-option]").forEach((option) => {
     option.setAttribute("aria-checked", String(option.dataset.themeOption === nextTheme));
   });
-  if (renderedDecorTheme && (renderedDecorTheme === "emo") !== (nextTheme === "emo")) {
+  if (renderedDecorTheme && (renderedDecorTheme === "ember") !== (nextTheme === "ember")) {
     renderDecor();
     if (posts.length) renderTimeline();
   }
@@ -3128,7 +3128,7 @@ function setEntryComposerFromStoredContent(content) {
   renderEntryImagePreview(image);
 }
 
-const EMO_DECOR_SWAP = {
+const EMBER_DECOR_SWAP = {
   "♡": "♥",
   ᰔ: "⛓",
   "✧": "✧",
@@ -3151,7 +3151,7 @@ const TEXT_PRESENTATION = "\uFE0E";
 
 function getDecorIcon(icon) {
   const glyph =
-    document.documentElement.dataset.theme === "emo" ? EMO_DECOR_SWAP[icon] || icon : icon;
+    document.documentElement.dataset.theme === "ember" ? EMBER_DECOR_SWAP[icon] || icon : icon;
   return `${glyph}${TEXT_PRESENTATION}`;
 }
 
@@ -16082,7 +16082,7 @@ function getExportPalette() {
   const theme = document.documentElement.dataset.theme;
   return {
     theme,
-    dark: ["plum", "dark", "emo"].includes(theme),
+    dark: ["dusk", "pine", "ember"].includes(theme),
     bg: read("--bg-1", "#fefdf9"),
     bg2: read("--bg-2", "#fdfbf1"),
     card: read("--card-solid", "#ffffff"),
@@ -16121,14 +16121,14 @@ function buildEntriesExportHtml(entries, options = {}) {
     .slice()
     .sort((left, right) => new Date(left.created_at) - new Date(right.created_at));
   const palette = getExportPalette();
-  const isEmo = palette.theme === "emo";
-  const headingFont = isEmo
+  const isEmber = palette.theme === "ember";
+  const headingFont = isEmber
     ? '"Grenze Gotisch", "Fredoka", serif'
     : '"Fredoka", "Quicksand", sans-serif';
-  const bodyFont = isEmo
+  const bodyFont = isEmber
     ? '"Special Elite", "Courier New", monospace'
     : '"Quicksand", system-ui, sans-serif';
-  const scriptFont = isEmo ? '"Grenze Gotisch", serif' : '"Dancing Script", cursive';
+  const scriptFont = isEmber ? '"Grenze Gotisch", serif' : '"Dancing Script", cursive';
   const validDate = (value) => {
     const date = new Date(value);
     return Number.isFinite(date.getTime()) ? date : null;
@@ -16349,7 +16349,7 @@ function buildEntriesExportHtml(entries, options = {}) {
     { number: totalPages, label: "♡" },
   );
 
-  const fontsHref = isEmo
+  const fontsHref = isEmber
     ? "https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700&family=Special+Elite&display=swap"
     : "https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Fredoka:wght@400;500;600&family=Lora:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap";
 

@@ -33,7 +33,7 @@ function seedProfiles() {
     username: person.name.toLowerCase(),
     avatar_url: "",
     bio: "",
-    theme: "plum",
+    theme: "nebula",
     last_seen_at: null,
     created_at: now,
     updated_at: now,
