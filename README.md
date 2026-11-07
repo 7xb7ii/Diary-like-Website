@@ -1,6 +1,6 @@
 # Tandem
 
-A private little diary for two people, built as a template. It installs like an app, works offline, and needs no server or database: everything is saved in the browser.
+A private diary for two people, built as a template. It installs like an app, works offline, and needs no server or database: everything is saved in the browser.
 
 ## Run it
 
