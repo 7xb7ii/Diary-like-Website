@@ -2,6 +2,8 @@
 
 A private diary for two people, built as a template. It installs like an app, works offline, and needs no server or database: everything is saved in the browser.
 
+**[Try the live demo](https://7xb7ii.github.io/Diary-like-Website/).** Sign in with `ahmed@example.com` or `najmah@example.com` and any password. Anything you add stays in your own browser.
+
 ![Tandem on a computer](docs/screenshots/desktop.jpg)
 
 <p align="center">
@@ -10,7 +12,7 @@ A private diary for two people, built as a template. It installs like an app, wo
   <img src="docs/screenshots/phone-widgets.jpg" alt="Widgets on a phone" width="32%" />
 </p>
 
-## Run it
+## Run it yourself
 
 ```bash
 npm install
